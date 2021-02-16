@@ -116,6 +116,11 @@ var plugins = [{
     "mediaTypes": ["text/markdown", "text/x-markdown"],
     "root": "/Users/leodube/Programming/Web Development/Tutorials/Gatsby/gatsby-md-blog-netlify"
   }
+}, {
+  plugin: __webpack_require__(/*! ./gatsby-ssr */ "./gatsby-ssr.js"),
+  options: {
+    "plugins": []
+  }
 }]; // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [
 //   {
@@ -590,6 +595,32 @@ Html = Html && Html.__esModule ? Html.default : Html;
   htmlStr = `<!DOCTYPE html>${htmlStr}`;
   callback(null, htmlStr);
 });
+
+/***/ }),
+
+/***/ "./gatsby-ssr.js":
+/*!***********************!*\
+  !*** ./gatsby-ssr.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const React = __webpack_require__(/*! react */ "react");
+
+const HeadComponents = [/*#__PURE__*/React.createElement("script", {
+  src: "https://identity.netlify.com/v1/netlify-identity-widget.js"
+})];
+const PostBodyComponents = [/*#__PURE__*/React.createElement("script", {
+  src: "/netlify-identity-body-component.js"
+})];
+
+exports.onRenderBody = ({
+  setHeadComponents,
+  setPostBodyComponents
+}) => {
+  setHeadComponents(HeadComponents);
+  setPostBodyComponents(PostBodyComponents);
+};
 
 /***/ }),
 
